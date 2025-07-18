@@ -1,0 +1,54 @@
+﻿@model List<webLogin.Models.UserModel>
+@{
+    Layout = "~/Views/Admin/Layout/admin_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Üye Listesi";
+}
+
+<h2 class="text-center mb-4">Kayıtlı Üyeler</h2>
+
+<div class="container mt-4">
+    <table id="membersTable" class="table table-bordered table-hover table-striped">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Ad Soyad</th>
+                <th>Kullanıcı Adı</th>
+                <th>E-posta</th>
+                <th>Telefon</th>
+                <th>Doğum Tarihi</th>
+                <th>Kayıt Tarihi</th> <!--bu kısmı ekliyoruz. -->
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model.OrderByDescending(x => x.CreatedDate)) //Veriyle tablonun doldurulması.Sıralama.tabloya dökülüyor veriler.
+            {
+                <tr>
+                    <td>@user.FullName</td>
+                    <td>@user.Username</td>
+                    <td>@user.Email</td>
+                    <td>@user.PhoneNumber</td>
+                    <td>@user.BirthDate.ToString("dd.MM.yyyy")</td>
+                    <td>@user.CreatedDate.ToString("dd.MM.yyyy HH:mm")</td> <!--  Yeni veri -->
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#membersTable').DataTable({//tabloyu dinamik hale getirir.
+                language: {
+                    url: 'https://cdn.datatables.net/plug-ins/1.13.4/i18n/tr.json'
+                },
+                order: [[5, 'desc']], // 5. sütun (Kayıt Tarihi) azalan sırada
+                pageLength: 10
+            });
+        });
+    </script>
+}

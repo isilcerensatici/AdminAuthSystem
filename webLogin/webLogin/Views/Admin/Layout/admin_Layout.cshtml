@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="~/css/admin.css" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"></script>
+</head>
+<body class="sb-nav-fixed">
+
+    <partial name="~/Views/Admin/Partials/_Header.cshtml" />
+
+
+    <div id="layoutSidenav">
+        <partial name="~/Views/Admin/Partials/_Sidebar.cshtml" />
+
+
+
+        <div id="layoutSidenav_content">
+            <main>
+                @RenderBody()
+            </main>
+
+            <partial name="~/Views/Admin/Partials/_Footer.cshtml" />
+
+
+        </div>
+    </div>
+
+    <script src="~/js/scripts.js"></script>
+</body>
+</html>
+@RenderSection("Scripts", required: true)
+

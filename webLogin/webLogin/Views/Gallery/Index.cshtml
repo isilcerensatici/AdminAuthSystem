@@ -1,0 +1,144 @@
+﻿@model List<Gallery>
+@{
+    Layout = "~/Views/Admin/Layout/admin_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Galeri Yönetimi";
+}
+
+<h2>Galeri Yönetimi</h2>
+
+<!-- 📥 Yeni Görsel Yükleme Alanı -->
+<form asp-action="Index" method="post" enctype="multipart/form-data" class="mb-4">
+    <div class="row g-2 align-items-center">
+        <div class="col-auto">
+            <input type="file" name="ImageFile" class="form-control" required />
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Görsel Ekle</button>
+        </div>
+    </div>
+</form>
+
+
+<!-- 🖼️ Galeri Görsellerini Listeleme -->
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-4">
+            <div class="card h-100 shadow-sm border-0">
+                <img src="~/img/gallery/@item.ImageFileName"
+                     class="card-img-top @(item.IsActive ? "" : "opacity-50")"
+                     alt="Galeri görseli" />
+
+                <div class="card-body text-center">
+
+                    <!-- 🔘 Aktif/Pasif Etme -->
+                    <form id="toggleForm-@item.Id" asp-action="ToggleStatus" method="post" asp-route-id="@item.Id"></form>
+
+                    <button type="button"
+                            class="btn btn-sm @(item.IsActive ? "btn-warning" : "btn-success")"
+                            onclick="confirmToggle(@item.Id, @(item.IsActive.ToString().ToLower()))">
+                        @(item.IsActive ? "Pasif Et" : "Aktif Et")
+                    </button>
+
+                    <!-- ✏️ Görsel Güncelleme -->
+                    <form id="updateForm-@item.Id"
+                          asp-action="UpdateImage"
+                          method="post"
+                          enctype="multipart/form-data"
+                          asp-route-id="@item.Id"
+                          class="mt-2">
+
+                        <div class="input-group input-group-sm">
+                            <input type="file" name="newImage" id="fileInput-@item.Id" class="form-control" />
+                            <button type="button" class="btn btn-outline-info"
+                                    onclick="confirmUpdate(@item.Id)">
+                                Güncelle
+                            </button>
+                        </div>
+                    </form>
+                    <form asp-action="SetAsProfileImage" asp-controller="Gallery" method="post">
+                        <input type="hidden" name="fileName" value="@item.ImageFileName" />
+                        <button type="submit" class="btn btn-outline-primary btn-sm">
+                            Profil Fotoğrafı Yap
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+
+
+<!-- SweetAlert2 Scripts + Onay Fonksiyonları -->
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function confirmToggle(id, isActive) {
+            let text = isActive
+                ? "Bu görseli pasifleştirmek istiyor musunuz?"
+                : "Bu görseli yeniden aktif hale getirmek istiyor musunuz?";
+            let confirmText = isActive ? "Evet, pasif yap" : "Evet, aktif yap";
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: text,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: confirmText,
+                cancelButtonText: 'Vazgeç',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('toggleForm-' + id).submit();
+                }
+            });
+        }
+
+        function confirmUpdate(id) {
+            const fileInput = document.getElementById('fileInput-' + id);
+            if (!fileInput.files.length) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Lütfen bir dosya seçin',
+                    timer: 2000,
+                    showConfirmButton: false
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Emin misiniz?',
+                text: "Bu görsel değiştirilecek. Bu işlem geri alınamaz!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Evet, güncelle',
+                cancelButtonText: 'Vazgeç',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('updateForm-' + id).submit();
+                }
+            });
+        }
+    </script>
+
+    @if (TempData["message"] != null)
+    {
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: '@TempData["message"]',
+                showConfirmButton: false,
+                timer: 2000
+            });
+        </script>
+    }
+}
+
+

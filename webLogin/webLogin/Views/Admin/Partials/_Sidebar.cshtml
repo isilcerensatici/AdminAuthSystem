@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // Layout = "~/Views/Admin/Layout/admin_Layout.cshtml";
+}
+<div id="layoutSidenav_nav">
+    <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+        <div class="sb-sidenav-menu">
+            <div class="nav">
+                <a class="nav-link" asp-controller="Gallery" asp-action="Index">
+                    <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                    Galeri Yönetimi
+                </a>
+                <a class="nav-link" asp-controller="User" asp-action="MemberList">
+                    <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
+                    Üye Listesi
+                </a>
+            </div>
+        </div>
+        <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            Start Bootstrap
+        </div>
+    </nav>
+</div>
+

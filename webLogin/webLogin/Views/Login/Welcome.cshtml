@@ -1,0 +1,35 @@
+﻿@model webLogin.Models.UserModel //bu view Usermodel sınıfını kullanıyor.Controllerdan kim giriş yaptıysa o satır çekiliyor.@model razor yönergesi ile model tanımlanıyor.
+@{
+    ViewData["Title"] = "Hoş Geldiniz";
+    var now = DateTime.Now; //şuanki zaman alınıyor
+	var birthDate = Model.BirthDate; //viewdeki controllerdan gelen modeldeki doğum tarihi alınıyor.viewden gelen veriye ulaşmak için Model.BirthDate kullanılıyor.
+    //Usermodeldeki birthdate probpertysine erişiyoruz.
+	var timespan = now - birthDate; // şuanki zaman ile doğum tarihi arasındaki fark hesaplanıyor.Timespan veri tipinde bir timespan değişkeni tanımlıyoruz.
+
+	var totalYears = (int)(timespan.TotalDays / 365);   // toplam yıl hesaplanıyor
+	var remainingMonths = (int)((timespan.TotalDays % 365) / 30);//kalan ay hesaplanıyor. mod hesaplama.
+	var remainingDays = (int)((timespan.TotalDays % 365) % 30);// kalan gün hesaplanıyor
+
+	var remainingHours = timespan.Hours;// kalan saat hesaplanıyor
+	var remainingMinutes = timespan.Minutes;// kalan dakika hesaplanıyor
+}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+<div class="container mt-5">
+	<h2 class="text-center">Hoş geldin, @Model.FullName!</h2> <!-- Kullanıcı adı modelden alınıyor -->
+    <p class="text-center mt-4">
+        Doğum tarihinden bu yana <strong>@totalYears</strong> yıl,
+        <strong>@remainingMonths</strong> ay,
+        <strong>@remainingDays</strong> gün,
+        <strong>@remainingHours</strong> saat,
+        <strong>@remainingMinutes</strong> dakika geçti.
+    </p>
+</div>
+<div class="text-center">
+    <a class="btn btn-outline-info" asp-controller="Portfolio" asp-action="Index">
+        Portfolyomu Görüntüle
+    </a>
+</div>
+

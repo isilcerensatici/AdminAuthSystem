@@ -1,0 +1,216 @@
+﻿@model About
+@{
+    Layout = "~/Views/Shared/_PortfolioLayout.cshtml";
+    ViewData["Title"] = "Portfolyom";
+}
+<section id="hero" class="hero section light-background">
+    <div class="container text-center py-5">
+        <h2>Hoş Geldiniz</h2>
+    </div>
+</section>
+<section id="about" class="about section">
+    <div class="container section-title">
+        <h2>Hakkımda</h2>
+        <p>@Model.Bio</p>
+    </div>
+    <div class="container">
+        <div class="row gy-4 justify-content-center">
+            <div class="col-lg-4">
+                @if (Model.ProfileImageFileName != null)
+                {
+                    <img src="~/img/gallery/@Model.ProfileImageFileName" class="profile-img img-fluid" alt="Profil Fotoğrafı" />
+                }
+
+
+            </div>
+            <div class="col-lg-8 centered-text">
+                <h2 class="fw-bold">@Model.FullName</h2>
+                <h4 class="text-muted">@Model.Title</h4>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="resume" class="resume">
+    <div class="container">
+        <div class="section-title">
+            <h2>Özgeçmiş</h2>
+            <p>
+                Ben Işıl Ceren Satıcı. Necmettin Erbakan Üniversitesi Bilgisayar Mühendisliği 4. sınıf öğrencisiyim.Yazılım ağırlıklı bir eğitim alıyor ve teknolojiye olan ilgimle sürekli kendimi geliştirmeye devam ediyorum.
+                Katıldığım Data Scientist Mini Bootcamp sayesinde veri bilimi ve yapay zekaya giriş, CRM analitiği, özellik mühendisliği (feature engineering) ve makine öğrenmesi konularında temel düzeyde bilgi ve uygulama deneyimi edindim. NumPy ve Pandas gibi kütüphanelerle veri işleme ve analiz yapmayı, Matplotlib ve Seaborn ile verileri görselleştirmeyi öğrendim. Bunun yanı sıra, katıldığım siber güvenlik kampında ağ güvenliği, temel şifreleme yöntemleri ve bulut teknolojileri hakkında bilgi sahibi oldum. Üniversitede aldığım Mikroişlemciler dersiyle Raspberry Pi Pico gibi kartlar için kod yazma, sensörlerle etkileşim kurma ve bu sistemleri simülasyonlar üzerinden test etme fırsatı buldum. Ayrıca yapay zeka dersimiz kapsamında eksik verileri tahmin ederek tamamlama, doğruluk oranı ve R² skoru ile model değerlendirme, komşuluk matrisi ile veri gösterimi gibi konular üzerinde çalıştım.Yaratıcılık yönüm sayesinde projelerde özgün fikirler üretebiliyor ve takım çalışmalarında kolayca uyum sağlayarak aktif rol alabiliyorum. Ayrıca, sorun çözme becerimle karşılaştığım teknik zorluklara hızlı ve etkili çözümler sunuyorum. Siber güvenlik ve web geliştirme alanlarında edindiğim sertifikalar da bu alanlarda kendimi kanıtladığım çalışmalarıma dayanmaktadır.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h3 class="resume-title">Eğitim</h3>
+                <div class="resume-item">
+                    <h4>Bilgisayar Mühendisliği</h4>
+                    <h5>2022 - 2026</h5>
+                    <p><em>Necmettin Erbakan Üniversitesi</em></p>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3 class="resume-title">Deneyim</h3>
+                <div class="resume-item">
+                    <h4>Web Developer</h4>
+                    <h5>2024 - Devam</h5>
+                    <p><em>Freelance</em></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="portfolio" class="portfolio">
+  <div class="container">
+    <div class="section-title">
+      <h2>Projelerim ve Sertifikalarım</h2>
+      <p>Geliştirdiğim uygulamalar ve katıldığım eğitimlerle teknik becerilerimi sürekli geliştiriyorum.</p>
+    </div>
+        <div class="row gy-4">
+            <div class="col-12">
+                <h4>Projeler</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Yapay Zeka Mini Projesi:</strong> Python ile eksik verileri tahmin edip R² skoru ile başarı ölçen ve komşuluk matrisiyle görselleştiren uygulama.</li>
+                    <li class="list-group-item"><strong>Veri Analizi & Görselleştirme:</strong> İstatistiksel analizlerle Matplotlib ve Seaborn kullanılarak grafiklerle sunum.</li>
+                    <li class="list-group-item"><strong>Kitaplık Takip Sistemi:</strong> Python ve .NET ile geliştirilen, kitapları okunma durumuna göre sınıflandırabilen masaüstü uygulama.</li>
+                    <li class="list-group-item"><strong>WhatsApp Otomatik Mesaj Gönderici:</strong> Pywhatkit ile belirli zamanlarda mesaj gönderen otomasyon kodu.</li>
+                    <li class="list-group-item"><strong>Toplu Mail Gönderim Script’i:</strong> .txt dosyasındaki maillere başvuru mesajlarını ileten Python script’i.</li>
+                    <li class="list-group-item"><strong>Sınav Takip Uygulaması:</strong> Sınav tarihine göre kalan günü hesaplayan kullanıcı dostu takvim.</li>
+                    <li class="list-group-item"><strong>HTML Kişisel Web Sitesi:</strong> Statik HTML ile yapılmış ilk kişisel portföy sayfası.</li>
+                </ul>
+            </div>
+            <div class="col-12 mt-5">
+                <h4>Sertifikalar & Eğitimler</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Veri Bilimi & Yapay Zeka:</strong> Miuul, Global AI Hub, GDSC, Etkin Kampüs, IBM SkillsBuild</li>
+                    <li class="list-group-item"><strong>Siber Güvenlik & Bulut:</strong> IBM, CyberStart, Coderspace, IEEE CyberEge’23</li>
+                    <li class="list-group-item"><strong>Profesyonel Beceriler:</strong> IBM SkillsBuild, Credly, Kodluyoruz</li>
+                    <li class="list-group-item"><strong>Etkinlik & Zirve Seçkisi:</strong> Coderspace, anbean, GDG Konya, Boğaziçi, Etkin Kampüs</li>
+                </ul>
+            </div>
+            <section id="gallery-showcase" class="portfolio mt-5">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Sertifikalarım</h2>
+                    </div>
+
+                    <div class="row gy-4">
+                        @foreach (var image in ViewBag.GalleryImages as List<string>)
+                        {
+                            <div class="col-md-4">
+                                <img src="~/img/gallery/@image" class="gallery-img img-fluid" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+</section>
+<section id="services" class="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Hizmetlerim</h2>
+            <p>Teknik bilgi ve yaratıcı bakış açımı birleştirerek sunduğum hizmet alanları</p>
+        </div>
+
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item item-cyan">
+                    <div class="icon"><i class="bi bi-code-slash"></i></div>
+                    <h3>Web Geliştirme</h3>
+                    <p>ASP.NET Core ile dinamik ve kullanıcı dostu web uygulamaları geliştiriyorum.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item item-orange">
+                    <div class="icon"><i class="bi bi-brush"></i></div>
+                    <h3>UI/UX Tasarımı</h3>
+                    <p>Estetik ve işlevselliği dengede tutan modern arayüzler tasarlıyorum.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item item-teal">
+                    <div class="icon"><i class="bi bi-book"></i></div>
+                    <h3>İçerik Yazarlığı</h3>
+                    <p>Teknoloji ve yapay zekâ temelli içerikler üretiyor, anlatımı sade ve güçlü tutuyorum.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item item-indigo">
+                    <div class="icon"><i class="bi bi-pencil"></i></div>
+                    <h3>İllüstrasyon & Dijital Çizim</h3>
+                    <p>Yazılarımı tamamlayan özgün görseller ve konsept çizimler hazırlıyorum.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item item-red">
+                    <div class="icon"><i class="bi bi-robot"></i></div>
+                    <h3>Yapay Zekâ Destekli Projeler</h3>
+                    <p>Veri analizi ve küçük ölçekli ML projelerinde Python ile çözümler üretiyorum.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact">
+    <div class="container" style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+
+        <!-- Sol bilgi kutuları -->
+        <div style="flex: 1; min-width: 280px;">
+            <div class="info-item d-flex mb-4">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div style="margin-left: 10px;">
+                    <h3>Adres</h3>
+                    <p>Antalya, Türkiye</p>
+                </div>
+            </div>
+
+            <div class="info-item d-flex mb-4">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div style="margin-left: 10px;">
+                    <h3>Telefon</h3>
+                    <p>+90 538 976 09 33</p>
+                </div>
+            </div>
+
+            <div class="info-item d-flex">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div style="margin-left: 10px;">
+                    <h3>Email</h3>
+                    <p>isilcerensatici2003@gmail.com</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form kutusu -->
+        <div style="flex: 2; min-width: 300px;">
+            <form class="php-email-form" method="post" action="#">
+                <div class="row gy-4">
+                    <div class="col-md-6">
+                        <input type="text" name="name" class="form-control" placeholder="Adınız" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" name="email" class="form-control" placeholder="E-posta" required>
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" name="subject" class="form-control" placeholder="Konu" required>
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="message" rows="6" class="form-control" placeholder="Mesajınız" required></textarea>
+                    </div>
+                    <div class="col-md-12 text-end">
+                        <button type="submit">Gönder</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
