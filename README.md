@@ -40,7 +40,7 @@ The following folders and files have been excluded from this repository:
 This ensures the project remains lightweight and secure.
 
 📸 Demo
-Screenshots and video demo available on [LinkedIn](https://linkedin.com/in)
+Screenshots and video demo available on [LinkedIn](https://linkedin.com/in/isil-ceren-satici)
 
 Built with ❤️ by Işıl Ceren Satıcı
 
